@@ -4,7 +4,7 @@ Tags: ai, llms.txt, robots.txt, geo, crawler
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,10 @@ AI assistants such as ChatGPT, Claude and Perplexity send their own crawlers to 
 
 **AI crawlers in robots.txt**
 
-* 14 known AI crawlers from OpenAI, Anthropic, Perplexity, Google, Apple, Meta, Mistral, ByteDance and Common Crawl.
+* 16 known AI crawlers from OpenAI, Anthropic, Perplexity, Google, Apple, Meta, Mistral, DuckDuckGo, Amazon, ByteDance and Common Crawl.
 * Each bot is labelled by purpose: AI search (cites your pages), user agent (fetches a page for a user) or model training.
-* Block only the ones you choose, for example training bots while keeping AI search bots.
+* Block only the ones you choose, or block training bots in one click while keeping AI search bots.
+* Live preview of the lines added to robots.txt.
 
 **Auto-generated llms.txt**
 
@@ -29,7 +30,8 @@ AI assistants such as ChatGPT, Claude and Perplexity send their own crawlers to 
 
 **AI bot visit tracking**
 
-* Visits per bot, pages read, last visit and most visited pages over 30 days.
+* Headline figures, visits per day, visits per bot and most read pages over 7, 30 or 90 days.
+* CSV export and a dashboard widget for the last 7 days.
 * No IP address or visitor data is stored. Only known AI bots are counted.
 * Adjustable retention period, with a daily clean-up.
 
@@ -60,6 +62,18 @@ No. Google-Extended only controls the use of your content for Google's AI models
 No. The plugin only counts requests whose user agent matches a known AI crawler, by day and page. It stores no IP address and no data about human visitors.
 
 == Changelog ==
+
+= 1.1.0 =
+* Settings screen split into tabs: Statistics, AI crawlers, llms.txt, Tracking.
+* Statistics: period selector (7, 30, 90 days), headline figures, visits per day and per bot.
+* CSV export of the visits, with formula injection protection.
+* "Block training only" and "Allow all" shortcuts, live robots.txt preview.
+* Preview of the current llms.txt in the admin.
+* Dashboard widget with the last 7 days.
+* New bots: DuckAssistBot, Amazonbot.
+* French translation.
+* The daily purge and table upgrades no longer run checks on front-end requests.
+* Notice when plain permalinks prevent /llms.txt from working.
 
 = 1.0.0 =
 * First release: AI crawler rules in robots.txt, generated llms.txt, AI bot visit tracking, REST route and WP-CLI commands.

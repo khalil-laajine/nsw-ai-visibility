@@ -73,5 +73,40 @@ update_option( NSW_AIV_OPTION, array( 'llms_manual' => "# Mon site\n\nTexte écr
 NSW_AIV_Llms::flush_cache();
 check( 'manual content replaces the generated file', "# Mon site\n\nTexte écrit à la main.\n" === NSW_AIV_Llms::content() );
 
+// Bots by purpose.
+$training = NSW_AIV_Bots::by_purpose( 'training' );
+check( 'training preset includes GPTBot and CCBot', in_array( 'GPTBot', $training, true ) && in_array( 'CCBot', $training, true ) );
+check( 'training preset leaves search bots alone', ! in_array( 'OAI-SearchBot', $training, true ) && ! in_array( 'PerplexityBot', $training, true ) );
+check( 'detects DuckAssistBot', 'DuckAssistBot' === NSW_AIV_Bots::detect( 'DuckAssistBot/1.2; (+http://duckduckgo.com/duckassistbot.html)' ) );
+check( 'ChatGPT-User is not mistaken for another OpenAI bot', 'ChatGPT-User' === NSW_AIV_Bots::detect( 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot' ) );
+
+// Report.
+$summary = NSW_AIV_Report::summary(
+	array(
+		array( 'bot' => 'GPTBot', 'hits' => 40 ),
+		array( 'bot' => 'OAI-SearchBot', 'hits' => 25 ),
+		array( 'bot' => 'ChatGPT-User', 'hits' => 10 ),
+	),
+	array( 'GPTBot' )
+);
+check( 'summary adds up visits', 75 === $summary['total'] && 3 === $summary['bots'] && 1 === $summary['blocked'] );
+check( 'summary splits visits by purpose', 40 === $summary['by_purpose']['training'] && 25 === $summary['by_purpose']['search'] && 10 === $summary['by_purpose']['agent'] );
+check( 'summary names the top bot', 'GPTBot' === $summary['top_bot'] );
+check( 'empty summary is all zeros', 0 === NSW_AIV_Report::summary( array(), array() )['total'] );
+check( 'bar is relative to the max', 100 === NSW_AIV_Report::bar( 40, 40 ) && 50 === NSW_AIV_Report::bar( 20, 40 ) );
+check( 'small values keep a visible bar', 2 === NSW_AIV_Report::bar( 1, 1000 ) );
+check( 'zero stays zero', 0 === NSW_AIV_Report::bar( 0, 10 ) && 0 === NSW_AIV_Report::bar( 3, 0 ) );
+
+$csv = NSW_AIV_Report::csv(
+	array(
+		array( 'day' => '2026-11-09', 'bot' => 'GPTBot', 'path' => '/blog/', 'hits' => '12' ),
+		array( 'day' => '2026-11-09', 'bot' => 'CCBot', 'path' => '=HYPERLINK("x")', 'hits' => 1 ),
+		array( 'day' => '2026-11-08', 'bot' => 'ClaudeBot', 'path' => '/a,b/', 'hits' => 3 ),
+	)
+);
+check( 'csv has a header and one line per row', 4 === count( explode( "\n", trim( $csv ) ) ) && 0 === strpos( $csv, "day,bot,path,hits\n" ) );
+check( 'csv neutralises formulas', false !== strpos( $csv, '"\'=HYPERLINK(""x"")"' ) );
+check( 'csv quotes commas', false !== strpos( $csv, '"/a,b/"' ) );
+
 echo "\n$count checks, $failures failure(s)\n";
 exit( $failures > 0 ? 1 : 0 );

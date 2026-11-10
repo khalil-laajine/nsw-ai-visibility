@@ -1,0 +1,245 @@
+/* NSW AI Visibility admin screen. Follows the WordPress admin palette. */
+
+.nsw-aiv .nsw-aiv-lead {
+	max-width: 760px;
+	color: #50575e;
+}
+
+.nsw-aiv .nsw-aiv-tabs {
+	margin-bottom: 16px;
+}
+
+/* Without JavaScript every panel stays visible, so the tabs are useless. */
+.nsw-aiv:not(.has-js) .nsw-aiv-tabs {
+	display: none;
+}
+
+.nsw-aiv .nsw-aiv-panel {
+	margin-bottom: 16px;
+}
+
+.nsw-aiv .nsw-aiv-box {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	padding: 4px 16px 16px;
+	margin-bottom: 16px;
+	min-width: 0;
+}
+
+.nsw-aiv .nsw-aiv-box h2 {
+	font-size: 14px;
+	margin: 12px 0;
+}
+
+.nsw-aiv .nsw-aiv-box-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.nsw-aiv .nsw-aiv-box-head h2 {
+	margin-right: auto;
+}
+
+.nsw-aiv .nsw-aiv-presets {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+
+.nsw-aiv .nsw-aiv-columns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: flex-start;
+}
+
+.nsw-aiv .nsw-aiv-columns > .nsw-aiv-box {
+	flex: 1 1 380px;
+	margin-bottom: 0;
+}
+
+.nsw-aiv .nsw-aiv-narrow {
+	max-width: 680px;
+}
+
+.nsw-aiv .nsw-aiv-periods {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 16px;
+}
+
+.nsw-aiv .nsw-aiv-export {
+	margin-left: auto;
+}
+
+.nsw-aiv .nsw-aiv-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+	margin-bottom: 16px;
+}
+
+.nsw-aiv .nsw-aiv-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	padding: 14px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.nsw-aiv .nsw-aiv-card-label {
+	font-size: 12px;
+	color: #50575e;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.nsw-aiv .nsw-aiv-card-value {
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.2;
+	color: #1d2327;
+}
+
+.nsw-aiv .nsw-aiv-daily {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 120px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.nsw-aiv .nsw-aiv-daily-bar {
+	flex: 1 1 0;
+	min-width: 2px;
+	background: #2271b1;
+	border-radius: 2px 2px 0 0;
+}
+
+.nsw-aiv .nsw-aiv-bars {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.nsw-aiv .nsw-aiv-bars th,
+.nsw-aiv .nsw-aiv-bars td {
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f1;
+	vertical-align: middle;
+	text-align: left;
+	font-weight: 400;
+}
+
+.nsw-aiv .nsw-aiv-bars th {
+	width: 45%;
+	padding-right: 12px;
+}
+
+.nsw-aiv .nsw-aiv-bar-cell {
+	width: 40%;
+}
+
+.nsw-aiv .nsw-aiv-bar {
+	display: block;
+	height: 8px;
+	border-radius: 4px;
+	background: #2271b1;
+}
+
+.nsw-aiv .nsw-aiv-bar.is-blocked {
+	background: #a7aaad;
+}
+
+.nsw-aiv .nsw-aiv-num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	padding-left: 12px;
+}
+
+.nsw-aiv .nsw-aiv-muted {
+	display: block;
+	font-size: 12px;
+	color: #50575e;
+}
+
+.nsw-aiv .nsw-aiv-tag {
+	display: inline-block;
+	margin-top: 2px;
+	font-size: 11px;
+	padding: 0 6px;
+	border-radius: 3px;
+	background: #f0f0f1;
+	color: #50575e;
+}
+
+.nsw-aiv .nsw-aiv-purpose-training {
+	color: #8a2424;
+}
+
+.nsw-aiv .nsw-aiv-purpose-search {
+	color: #135e96;
+}
+
+.nsw-aiv .nsw-aiv-bot-table .check-column {
+	padding: 8px 0 8px 10px;
+}
+
+.nsw-aiv .nsw-aiv-code {
+	margin: 0;
+	padding: 12px 14px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.55;
+	white-space: pre-wrap;
+	word-break: break-word;
+	max-height: 420px;
+	overflow: auto;
+}
+
+.nsw-aiv .nsw-aiv-code-tall {
+	max-height: 560px;
+}
+
+.nsw-aiv .nsw-aiv-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+
+.nsw-aiv details {
+	margin: 12px 0;
+}
+
+.nsw-aiv details summary {
+	cursor: pointer;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.nsw-aiv .nsw-aiv-dev {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-top: 16px;
+	padding: 12px 14px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+}
+
+.nsw-aiv .nsw-aiv-dev code {
+	background: none;
+	padding: 0;
+}
+
+.nsw-aiv .nsw-aiv-empty p {
+	margin: 12px 0 0;
+}

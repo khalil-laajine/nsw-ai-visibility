@@ -1,0 +1,220 @@
+# French translation for NSW AI Visibility.
+# This file is distributed under the same license as the plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: NSW AI Visibility 1.1.0\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: nsw-ai-visibility\n"
+
+msgid "AI Visibility"
+msgstr "AI Visibility"
+
+msgid "Settings"
+msgstr "Réglages"
+
+msgid "Statistics"
+msgstr "Statistiques"
+
+msgid "AI crawlers"
+msgstr "Robots IA"
+
+msgid "llms.txt"
+msgstr "llms.txt"
+
+msgid "Tracking"
+msgstr "Suivi"
+
+msgid "See which AI bots visit your site, choose which ones may read it, and publish an llms.txt file that presents your content to AI assistants."
+msgstr "Voyez quels robots d'IA visitent votre site, choisissez ceux qui peuvent le lire et publiez un fichier llms.txt qui présente vos contenus aux assistants IA."
+
+msgid "Sections"
+msgstr "Sections"
+
+msgid "A robots.txt file exists at the root of your site, so WordPress does not generate one and the AI crawler rules below are not applied. Add them to that file by hand, or remove it."
+msgstr "Un fichier robots.txt existe à la racine de votre site : WordPress n'en génère donc pas et les règles pour les robots IA ne sont pas appliquées. Ajoutez-les à la main dans ce fichier, ou supprimez-le."
+
+msgid "An llms.txt file exists at the root of your site and is served instead of the generated one."
+msgstr "Un fichier llms.txt existe à la racine de votre site : c'est lui qui est servi, à la place du fichier généré."
+
+msgid "Your site asks search engines not to index it, so no AI crawler rules are added to robots.txt."
+msgstr "Votre site demande aux moteurs de recherche de ne pas l'indexer : aucune règle pour les robots IA n'est ajoutée au robots.txt."
+
+msgid "Plain permalinks are enabled: /llms.txt only works with pretty permalinks (Settings > Permalinks)."
+msgstr "Les permaliens simples sont activés : /llms.txt ne fonctionne qu'avec des permaliens personnalisés (Réglages > Permaliens)."
+
+msgid "Period:"
+msgstr "Période :"
+
+msgid "Export CSV"
+msgstr "Exporter en CSV"
+
+msgid "AI bot visits"
+msgstr "Visites de robots IA"
+
+msgid "Different bots"
+msgstr "Robots différents"
+
+msgid "From AI search engines"
+msgstr "Moteurs de réponse IA"
+
+msgid "Blocked bots"
+msgstr "Robots bloqués"
+
+msgid "No AI bot visit recorded for this period. Data appears as soon as a known AI crawler reads one of your pages."
+msgstr "Aucune visite de robot IA sur cette période. Les données apparaissent dès qu'un robot IA connu lit une de vos pages."
+
+msgid "Visits per day"
+msgstr "Visites par jour"
+
+msgid "AI bot visits per day"
+msgstr "Visites de robots IA par jour"
+
+msgid "Visits per bot"
+msgstr "Visites par robot"
+
+msgid "Bot"
+msgstr "Robot"
+
+msgid "Share"
+msgstr "Part"
+
+msgid "Visits"
+msgstr "Visites"
+
+msgid "blocked"
+msgstr "bloqué"
+
+msgid "A blocked bot can still appear here: robots.txt is a request, and some bots read it a few days late or ignore it."
+msgstr "Un robot bloqué peut encore apparaître ici : le robots.txt est une demande, et certains robots le lisent avec quelques jours de retard ou l'ignorent."
+
+msgid "Pages most read by AI bots"
+msgstr "Pages les plus lues par les IA"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "Bots to block"
+msgstr "Robots à bloquer"
+
+msgid "Block training only"
+msgstr "Bloquer l'entraînement seul"
+
+msgid "Allow all"
+msgstr "Tout autoriser"
+
+msgid "Blocking a training bot keeps your texts out of future models without removing you from the answers of ChatGPT Search, Perplexity or Claude. Blocking a search bot can remove your pages from its answers."
+msgstr "Bloquer un robot d'entraînement garde vos textes hors des futurs modèles, sans vous retirer des réponses de ChatGPT Search, Perplexity ou Claude. Bloquer un robot de recherche peut retirer vos pages de ses réponses."
+
+msgid "Block"
+msgstr "Bloquer"
+
+msgid "Company"
+msgstr "Éditeur"
+
+msgid "Purpose"
+msgstr "Rôle"
+
+msgid "Added to robots.txt"
+msgstr "Ajouté au robots.txt"
+
+msgid "# No AI crawler blocked"
+msgstr "# Aucun robot IA bloqué"
+
+msgid "The preview follows your ticks. Save, then check the live file: %s"
+msgstr "L'aperçu suit vos cases cochées. Enregistrez, puis vérifiez le fichier en ligne : %s"
+
+msgid "llms.txt file"
+msgstr "Fichier llms.txt"
+
+msgid "Serve the file at %s"
+msgstr "Publier le fichier à l'adresse %s"
+
+msgid "Introduction"
+msgstr "Présentation"
+
+msgid "A few sentences on who you are, what you offer and where. This is what AI assistants will read first."
+msgstr "Quelques phrases : qui vous êtes, ce que vous proposez et où. C'est ce que les assistants IA liront en premier."
+
+msgid "Latest articles to list"
+msgstr "Derniers articles à lister"
+
+msgid "Write the file yourself"
+msgstr "Rédiger le fichier vous-même"
+
+msgid "Manual llms.txt content"
+msgstr "Contenu du llms.txt rédigé à la main"
+
+msgid "Optional. When filled in, this Markdown replaces the generated file."
+msgstr "Facultatif. Une fois rempli, ce texte en Markdown remplace le fichier généré."
+
+msgid "Summaries come from the Rank Math or Yoast meta description, then the excerpt. Pages marked noindex are never listed."
+msgstr "Les résumés viennent de la méta description Rank Math ou Yoast, sinon de l'extrait. Les pages en noindex ne sont jamais listées."
+
+msgid "Current file"
+msgstr "Fichier actuel"
+
+msgid "Updated when you save these settings or publish content."
+msgstr "Mis à jour quand vous enregistrez ces réglages ou publiez un contenu."
+
+msgid "The file is turned off: /llms.txt returns a 404 error."
+msgstr "Le fichier est désactivé : /llms.txt renvoie une erreur 404."
+
+msgid "Visit tracking"
+msgstr "Suivi des visites"
+
+msgid "Count AI bot visits"
+msgstr "Compter les visites des robots IA"
+
+msgid "Keep data for"
+msgstr "Conserver les données pendant"
+
+msgid "days"
+msgstr "jours"
+
+msgid "One row per day, bot and page. Only known AI bots are counted: no IP address, no cookie, no visitor data. Older rows are deleted every day."
+msgstr "Une ligne par jour, par robot et par page. Seuls les robots IA connus sont comptés : pas d'adresse IP, pas de cookie, aucune donnée de visiteur. Les lignes plus anciennes sont supprimées chaque jour."
+
+msgid "Also available from the command line and the REST API"
+msgstr "Aussi disponible en ligne de commande et via l'API REST"
+
+msgid "You are not allowed to export these stats."
+msgstr "Vous n'avez pas le droit d'exporter ces statistiques."
+
+msgid "AI search (cites your pages)"
+msgstr "Recherche IA (cite vos pages)"
+
+msgid "Fetches a page for a user"
+msgstr "Lit une page à la demande d'un utilisateur"
+
+msgid "Model training"
+msgstr "Entraînement des modèles"
+
+msgid "AI bots, last 7 days"
+msgstr "Robots IA, 7 derniers jours"
+
+msgid "No AI bot visit recorded this week."
+msgstr "Aucune visite de robot IA cette semaine."
+
+msgid "%1$s visits from %2$s different AI bots."
+msgstr "%1$s visites de %2$s robots IA différents."
+
+msgid "See details and settings"
+msgstr "Voir le détail et les réglages"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Latest articles"
+msgstr "Derniers articles"
+
+msgid "Control which AI crawlers can read your site, publish an llms.txt file and see which pages AI bots actually visit."
+msgstr "Choisissez quels robots d'IA peuvent lire votre site, publiez un fichier llms.txt et voyez quelles pages les robots IA visitent vraiment."
+
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d jour"
+msgstr[1] "%d jours"

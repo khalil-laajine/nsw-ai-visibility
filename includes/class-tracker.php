@@ -25,12 +25,21 @@ class NSW_AIV_Tracker {
 		add_action( 'wp', array( __CLASS__, 'record' ), 1 );
 		add_action( self::CRON_HOOK, array( __CLASS__, 'purge' ) );
 
+		// Upgrades and a lost cron event are repaired from the admin only, never on front-end requests.
+		if ( is_admin() ) {
+			if ( get_option( 'nsw_aiv_db_version' ) !== self::DB_VERSION ) {
+				self::create_table();
+			}
+			self::schedule();
+		}
+	}
+
+	/**
+	 * Schedule the daily purge if it is missing.
+	 */
+	public static function schedule() {
 		if ( ! wp_next_scheduled( self::CRON_HOOK ) ) {
 			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', self::CRON_HOOK );
-		}
-
-		if ( get_option( 'nsw_aiv_db_version' ) !== self::DB_VERSION ) {
-			self::create_table();
 		}
 	}
 
@@ -192,5 +201,63 @@ class NSW_AIV_Tracker {
 	private static function since( $days ) {
 		$days = max( 1, (int) $days );
 		return gmdate( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' -' . ( $days - 1 ) . ' days' ) );
+	}
+
+	/**
+	 * Total AI bot visits per day over the last N days, oldest first.
+	 *
+	 * Days without any visit are included with 0 so the series has no gaps.
+	 *
+	 * @param int $days Period length.
+	 * @return array<string, int> Visits keyed by Y-m-d date.
+	 */
+	public static function daily( $days = 30 ) {
+		global $wpdb;
+		$table = self::table();
+		$since = self::since( $days );
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT day, SUM(hits) AS hits FROM {$table} WHERE day >= %s GROUP BY day", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$since
+			),
+			ARRAY_A
+		);
+
+		$series = array();
+		$cursor = strtotime( $since );
+		$today  = strtotime( current_time( 'Y-m-d' ) );
+		while ( $cursor <= $today ) {
+			$series[ gmdate( 'Y-m-d', $cursor ) ] = 0;
+			$cursor += DAY_IN_SECONDS;
+		}
+		foreach ( (array) $rows as $row ) {
+			if ( isset( $series[ $row['day'] ] ) ) {
+				$series[ $row['day'] ] = (int) $row['hits'];
+			}
+		}
+
+		return $series;
+	}
+
+	/**
+	 * Raw rows for the CSV export, newest first.
+	 *
+	 * @param int $days Period length.
+	 * @return array<int, array{day: string, bot: string, path: string, hits: int}>
+	 */
+	public static function rows( $days = 30 ) {
+		global $wpdb;
+		$table = self::table();
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		return (array) $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT day, bot, path, hits FROM {$table} WHERE day >= %s ORDER BY day DESC, hits DESC", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				self::since( $days )
+			),
+			ARRAY_A
+		);
 	}
 }

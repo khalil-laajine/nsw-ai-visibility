@@ -37,6 +37,8 @@ class NSW_AIV_Bots {
 			'Bytespider'         => array( 'vendor' => 'ByteDance', 'purpose' => 'training' ),
 			'CCBot'              => array( 'vendor' => 'Common Crawl', 'purpose' => 'training' ),
 			'MistralAI-User'     => array( 'vendor' => 'Mistral', 'purpose' => 'agent' ),
+			'DuckAssistBot'      => array( 'vendor' => 'DuckDuckGo', 'purpose' => 'search' ),
+			'Amazonbot'          => array( 'vendor' => 'Amazon', 'purpose' => 'search' ),
 		);
 
 		/**
@@ -45,6 +47,22 @@ class NSW_AIV_Bots {
 		 * @param array $bots Bots keyed by robots.txt token.
 		 */
 		return apply_filters( 'nsw_aiv_bots', $bots );
+	}
+
+	/**
+	 * Tokens of every bot with a given purpose.
+	 *
+	 * @param string $purpose "search", "agent" or "training".
+	 * @return string[]
+	 */
+	public static function by_purpose( $purpose ) {
+		$tokens = array();
+		foreach ( self::all() as $token => $bot ) {
+			if ( $purpose === $bot['purpose'] ) {
+				$tokens[] = $token;
+			}
+		}
+		return $tokens;
 	}
 
 	/**

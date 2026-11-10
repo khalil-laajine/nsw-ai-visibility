@@ -44,6 +44,7 @@ require __DIR__ . '/../includes/class-bots.php';
 require __DIR__ . '/../includes/class-settings.php';
 require __DIR__ . '/../includes/class-robots.php';
 require __DIR__ . '/../includes/class-llms.php';
+require __DIR__ . '/../includes/class-report.php';
 
 /**
  * Create a fake post.

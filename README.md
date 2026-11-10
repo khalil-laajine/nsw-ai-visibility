@@ -18,13 +18,16 @@ Cette extension répond à ces trois questions depuis l'administration WordPress
 ## Fonctionnalités
 
 **Contrôle des robots d'IA dans robots.txt**
-14 robots connus (OpenAI, Anthropic, Perplexity, Google, Apple, Meta, Mistral, ByteDance, Common Crawl), classés selon leur rôle : recherche (ils citent vos pages), agent (ils ouvrent une page pour un utilisateur) ou entraînement. Vous bloquez seulement ceux que vous voulez, par exemple les robots d'entraînement en gardant ceux de recherche.
+16 robots connus (OpenAI, Anthropic, Perplexity, Google, Apple, Meta, Mistral, DuckDuckGo, Amazon, ByteDance, Common Crawl), classés selon leur rôle : recherche (ils citent vos pages), agent (ils ouvrent une page pour un utilisateur) ou entraînement. Vous bloquez seulement ceux que vous voulez, en un clic pour « bloquer l'entraînement seul » si vous voulez rester cité par ChatGPT Search, Perplexity ou Claude. L'aperçu du robots.txt suit vos cases cochées en direct.
 
 **Fichier llms.txt généré automatiquement**
 Servi à l'adresse `/llms.txt`, au format proposé sur [llmstxt.org](https://llmstxt.org) : nom et description du site, une introduction que vous rédigez, la liste des pages et des derniers articles avec un résumé. Le résumé reprend la méta-description de Rank Math ou de Yoast quand elle existe, et les pages en `noindex` sont exclues. Le fichier est mis en cache et reconstruit à chaque publication. Vous pouvez aussi l'écrire entièrement à la main.
 
 **Suivi des visites des robots d'IA**
-Nombre de visites par robot, nombre de pages lues, date du dernier passage et pages les plus visitées sur 30 jours. Aucune adresse IP ni donnée de visiteur n'est enregistrée : seuls les robots sont comptés, dans une table dédiée, avec une durée de conservation réglable.
+Chiffres clés, visites par jour, visites par robot et pages les plus lues, sur 7, 30 ou 90 jours, avec un export CSV. Un widget du tableau de bord résume la semaine. Aucune adresse IP ni donnée de visiteur n'est enregistrée : seuls les robots sont comptés, dans une table dédiée, avec une durée de conservation réglable.
+
+**En français**
+L'interface est traduite en français (fichiers `.po` et `.mo` dans `languages/`).
 
 **API REST et WP-CLI**
 Les statistiques sont disponibles en JSON pour un tableau de bord (Looker Studio, rapport client mensuel) et en ligne de commande.
@@ -106,9 +109,13 @@ includes/class-bots.php      Liste des robots d'IA et détection
 includes/class-robots.php    Règles ajoutées au robots.txt virtuel
 includes/class-llms.php      Génération et service du llms.txt
 includes/class-tracker.php   Comptage des visites, purge planifiée
+includes/class-report.php    Synthèses et export CSV (sans accès à la base)
+includes/class-dashboard.php Widget du tableau de bord
 includes/class-rest.php      Route REST des statistiques
 includes/class-cli.php       Commandes WP-CLI
-includes/class-admin.php     Écran Réglages > AI Visibility
+includes/class-admin.php     Écran Réglages > AI Visibility, en onglets
+assets/                      CSS et JavaScript de l'écran de réglages
+languages/                   Traduction française
 uninstall.php                Suppression des options et de la table
 ```
 

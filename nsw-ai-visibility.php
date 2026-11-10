@@ -3,7 +3,7 @@
  * Plugin Name:       NSW AI Visibility
  * Plugin URI:        https://github.com/khalil-laajine/nsw-ai-visibility
  * Description:       Control which AI crawlers can read your site, publish an llms.txt file and see which pages AI bots actually visit.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            Khalil Laajine
@@ -18,9 +18,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NSW_AIV_VERSION', '1.0.0' );
+define( 'NSW_AIV_VERSION', '1.1.0' );
 define( 'NSW_AIV_FILE', __FILE__ );
 define( 'NSW_AIV_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NSW_AIV_URL', plugin_dir_url( __FILE__ ) );
 define( 'NSW_AIV_OPTION', 'nsw_aiv_settings' );
 
 require_once NSW_AIV_DIR . 'includes/class-bots.php';
@@ -29,7 +30,9 @@ require_once NSW_AIV_DIR . 'includes/class-robots.php';
 require_once NSW_AIV_DIR . 'includes/class-llms.php';
 require_once NSW_AIV_DIR . 'includes/class-tracker.php';
 require_once NSW_AIV_DIR . 'includes/class-rest.php';
+require_once NSW_AIV_DIR . 'includes/class-report.php';
 require_once NSW_AIV_DIR . 'includes/class-admin.php';
+require_once NSW_AIV_DIR . 'includes/class-dashboard.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	require_once NSW_AIV_DIR . 'includes/class-cli.php';
@@ -49,6 +52,7 @@ function nsw_aiv_boot() {
 
 	if ( is_admin() ) {
 		NSW_AIV_Admin::init();
+		NSW_AIV_Dashboard::init();
 	}
 }
 add_action( 'plugins_loaded', 'nsw_aiv_boot' );
@@ -58,6 +62,7 @@ add_action( 'plugins_loaded', 'nsw_aiv_boot' );
  */
 function nsw_aiv_activate() {
 	NSW_AIV_Tracker::create_table();
+	NSW_AIV_Tracker::schedule();
 	NSW_AIV_Llms::add_rewrite_rule();
 	flush_rewrite_rules();
 }
