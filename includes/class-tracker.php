@@ -129,8 +129,8 @@ class NSW_AIV_Tracker {
 		$table    = self::table();
 		$limit    = gmdate( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' -' . (int) $settings['retention'] . ' days' ) );
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
-		$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE day < %s", $limit ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom table, table name is not user input.
+		$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} WHERE day < %s", $limit ) );
 	}
 
 	/**
@@ -226,11 +226,9 @@ class NSW_AIV_Tracker {
 		);
 
 		$series = array();
-		$cursor = strtotime( $since );
 		$today  = strtotime( current_time( 'Y-m-d' ) );
-		while ( $cursor <= $today ) {
+		for ( $cursor = strtotime( $since ); $cursor <= $today; $cursor += DAY_IN_SECONDS ) {
 			$series[ gmdate( 'Y-m-d', $cursor ) ] = 0;
-			$cursor += DAY_IN_SECONDS;
 		}
 		foreach ( (array) $rows as $row ) {
 			if ( isset( $series[ $row['day'] ] ) ) {

@@ -23,22 +23,70 @@ class NSW_AIV_Bots {
 	 */
 	public static function all() {
 		$bots = array(
-			'GPTBot'             => array( 'vendor' => 'OpenAI', 'purpose' => 'training' ),
-			'OAI-SearchBot'      => array( 'vendor' => 'OpenAI', 'purpose' => 'search' ),
-			'ChatGPT-User'       => array( 'vendor' => 'OpenAI', 'purpose' => 'agent' ),
-			'ClaudeBot'          => array( 'vendor' => 'Anthropic', 'purpose' => 'training' ),
-			'Claude-SearchBot'   => array( 'vendor' => 'Anthropic', 'purpose' => 'search' ),
-			'Claude-User'        => array( 'vendor' => 'Anthropic', 'purpose' => 'agent' ),
-			'PerplexityBot'      => array( 'vendor' => 'Perplexity', 'purpose' => 'search' ),
-			'Perplexity-User'    => array( 'vendor' => 'Perplexity', 'purpose' => 'agent' ),
-			'Google-Extended'    => array( 'vendor' => 'Google', 'purpose' => 'training' ),
-			'Applebot-Extended'  => array( 'vendor' => 'Apple', 'purpose' => 'training' ),
-			'meta-externalagent' => array( 'vendor' => 'Meta', 'purpose' => 'training' ),
-			'Bytespider'         => array( 'vendor' => 'ByteDance', 'purpose' => 'training' ),
-			'CCBot'              => array( 'vendor' => 'Common Crawl', 'purpose' => 'training' ),
-			'MistralAI-User'     => array( 'vendor' => 'Mistral', 'purpose' => 'agent' ),
-			'DuckAssistBot'      => array( 'vendor' => 'DuckDuckGo', 'purpose' => 'search' ),
-			'Amazonbot'          => array( 'vendor' => 'Amazon', 'purpose' => 'search' ),
+			'GPTBot'             => array(
+				'vendor'  => 'OpenAI',
+				'purpose' => 'training',
+			),
+			'OAI-SearchBot'      => array(
+				'vendor'  => 'OpenAI',
+				'purpose' => 'search',
+			),
+			'ChatGPT-User'       => array(
+				'vendor'  => 'OpenAI',
+				'purpose' => 'agent',
+			),
+			'ClaudeBot'          => array(
+				'vendor'  => 'Anthropic',
+				'purpose' => 'training',
+			),
+			'Claude-SearchBot'   => array(
+				'vendor'  => 'Anthropic',
+				'purpose' => 'search',
+			),
+			'Claude-User'        => array(
+				'vendor'  => 'Anthropic',
+				'purpose' => 'agent',
+			),
+			'PerplexityBot'      => array(
+				'vendor'  => 'Perplexity',
+				'purpose' => 'search',
+			),
+			'Perplexity-User'    => array(
+				'vendor'  => 'Perplexity',
+				'purpose' => 'agent',
+			),
+			'Google-Extended'    => array(
+				'vendor'  => 'Google',
+				'purpose' => 'training',
+			),
+			'Applebot-Extended'  => array(
+				'vendor'  => 'Apple',
+				'purpose' => 'training',
+			),
+			'meta-externalagent' => array(
+				'vendor'  => 'Meta',
+				'purpose' => 'training',
+			),
+			'Bytespider'         => array(
+				'vendor'  => 'ByteDance',
+				'purpose' => 'training',
+			),
+			'CCBot'              => array(
+				'vendor'  => 'Common Crawl',
+				'purpose' => 'training',
+			),
+			'MistralAI-User'     => array(
+				'vendor'  => 'Mistral',
+				'purpose' => 'agent',
+			),
+			'DuckAssistBot'      => array(
+				'vendor'  => 'DuckDuckGo',
+				'purpose' => 'search',
+			),
+			'Amazonbot'          => array(
+				'vendor'  => 'Amazon',
+				'purpose' => 'search',
+			),
 		);
 
 		/**

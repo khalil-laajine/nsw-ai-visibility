@@ -91,11 +91,8 @@ class NSW_AIV_CLI {
 
 	/**
 	 * Print the generated llms.txt.
-	 *
-	 * @param array $args       Positional arguments.
-	 * @param array $assoc_args Named arguments.
 	 */
-	public function llms( $args, $assoc_args ) {
+	public function llms() {
 		NSW_AIV_Llms::flush_cache();
 		WP_CLI::log( NSW_AIV_Llms::content() );
 	}
@@ -108,10 +105,9 @@ class NSW_AIV_CLI {
 	 * <bot>...
 	 * : Bot tokens, for example GPTBot or CCBot.
 	 *
-	 * @param array $args       Positional arguments.
-	 * @param array $assoc_args Named arguments.
+	 * @param array $args Bot tokens.
 	 */
-	public function block( $args, $assoc_args ) {
+	public function block( $args ) {
 		$this->set_blocked( $args, true );
 	}
 
@@ -123,10 +119,9 @@ class NSW_AIV_CLI {
 	 * <bot>...
 	 * : Bot tokens.
 	 *
-	 * @param array $args       Positional arguments.
-	 * @param array $assoc_args Named arguments.
+	 * @param array $args Bot tokens.
 	 */
-	public function allow( $args, $assoc_args ) {
+	public function allow( $args ) {
 		$this->set_blocked( $args, false );
 	}
 

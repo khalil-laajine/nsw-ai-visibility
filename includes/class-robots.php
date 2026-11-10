@@ -27,11 +27,11 @@ class NSW_AIV_Robots {
 	 * Append a Disallow block for every blocked AI crawler.
 	 *
 	 * @param string $output Current robots.txt content.
-	 * @param bool   $public Whether the site is set to be visible to search engines.
+	 * @param bool   $is_public Whether the site is set to be visible to search engines.
 	 * @return string
 	 */
-	public static function filter( $output, $public ) {
-		if ( ! $public ) {
+	public static function filter( $output, $is_public ) {
+		if ( ! $is_public ) {
 			return $output;
 		}
 

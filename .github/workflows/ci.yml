@@ -13,7 +13,7 @@ jobs:
       matrix:
         php: ['7.4', '8.0', '8.1', '8.2', '8.3']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: shivammathur/setup-php@v2
         with:
@@ -29,10 +29,8 @@ jobs:
   coding-standards:
     name: WordPress Coding Standards
     runs-on: ubuntu-latest
-    # Report only for now: make it blocking once the first PHPCS run is clean.
-    continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: shivammathur/setup-php@v2
         with:

@@ -25,7 +25,7 @@ class NSW_AIV_Llms {
 		add_action( 'init', array( __CLASS__, 'add_rewrite_rule' ) );
 		add_filter( 'query_vars', array( __CLASS__, 'query_vars' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'serve' ), 0 );
-		add_filter( 'redirect_canonical', array( __CLASS__, 'no_trailing_slash' ), 10, 2 );
+		add_filter( 'redirect_canonical', array( __CLASS__, 'no_trailing_slash' ) );
 
 		// Rebuild the file when content or settings change.
 		add_action( 'save_post', array( __CLASS__, 'flush_cache' ) );
@@ -55,10 +55,9 @@ class NSW_AIV_Llms {
 	 * Stop WordPress from redirecting /llms.txt to /llms.txt/.
 	 *
 	 * @param string|false $redirect_url Redirect target.
-	 * @param string       $requested_url Requested URL.
 	 * @return string|false
 	 */
-	public static function no_trailing_slash( $redirect_url, $requested_url ) {
+	public static function no_trailing_slash( $redirect_url ) {
 		if ( get_query_var( self::QUERY_VAR ) ) {
 			return false;
 		}
@@ -136,7 +135,14 @@ class NSW_AIV_Llms {
 			$out[] = trim( $settings['llms_intro'] );
 		}
 
-		$pages = self::query( 'page', 30, array( 'menu_order' => 'ASC', 'title' => 'ASC' ) );
+		$pages = self::query(
+			'page',
+			30,
+			array(
+				'menu_order' => 'ASC',
+				'title'      => 'ASC',
+			)
+		);
 		if ( $pages ) {
 			$out[] = '';
 			$out[] = '## ' . __( 'Pages', 'nsw-ai-visibility' );

@@ -351,7 +351,7 @@ class NSW_AIV_Admin {
 	}
 
 	/**
-	 * llms.txt tab.
+	 * Tab for the llms.txt file.
 	 */
 	private static function render_llms() {
 		$settings = NSW_AIV_Settings::get();
